@@ -1,0 +1,51 @@
+@import '@/assets/scss/themes.scss';
+
+// 遍历主题map
+@mixin themeify{
+  @each $theme-name, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+    [data-theme="#{$theme-name}"] & {
+      @content;
+    }
+  }
+}
+
+// 声明一个根据Key获取颜色的function
+@function themed($key) {
+  @return map-get($theme-map, $key); 
+}
+
+// 获取背景颜色
+@mixin background_color($color) {
+  @include themeify {
+    background: themed($color) !important;
+  }
+}
+
+/** 渐变背景色*/
+@mixin background_image($color){
+  @include themeify{
+    background-image: themed($color) !important;
+  }
+}
+
+/** 获取灰色字体颜色*/
+@mixin grey_color($color){
+  @include themeify{
+    color: themed($color) !important;
+  }
+}
+
+// 获取字体颜色
+@mixin font_color($color) {
+  @include themeify { 
+    color: themed($color) !important;
+  }
+}
+
+// 获取字体颜色
+@mixin border_color($color) {
+  @include themeify { 
+    border-top: 1px solid themed($color) !important;
+  }
+}

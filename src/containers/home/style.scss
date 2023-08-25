@@ -1,0 +1,20 @@
+.home-wrap{
+  width: 100vw;
+  overflow: hidden;
+  //padding-top: .5rem;
+}
+.banner-wrap{
+  margin-top: 4px;
+  display: flex;
+  .banner-item{
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    width: calc(100vw - 40px);
+    margin-right: 20px;
+    img{
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
+}

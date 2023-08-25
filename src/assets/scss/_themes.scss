@@ -1,0 +1,18 @@
+$themes: (
+  light: (
+    background_color:#ffffff,
+    text-color:rgba(0,0,0,0.65),
+    tabbar_border:#000,
+    background_image: linear-gradient(to bottom, #b1facc 0%, #fff 100%),
+    color:$black-color,
+    gery-color:#000,
+  ),
+  dark: (
+    background_color:#000,
+    text-color:rgba(255,255,255,0.65),
+    tabbar_border:#ccc,
+    background_image: linear-gradient(to bottom, #212121 0%, #212121 100%),
+    color:$white-color,
+    gery-color:#ccc,
+  )
+)

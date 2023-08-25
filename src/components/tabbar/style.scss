@@ -1,0 +1,21 @@
+@import '@/assets/scss/_common.scss';
+.mine-tabbar{
+  @include border_color('tabbar-border');
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  .item{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .active-item{
+    color: $primary-color;
+  }
+}

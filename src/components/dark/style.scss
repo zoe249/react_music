@@ -1,0 +1,11 @@
+@import '@/assets/scss/_common.scss';
+
+.dark-btn{
+  position: absolute;
+  font-size: .2rem;
+  //@include background_color('background_color');
+  
+  //@include font_color('text-color');
+  //width: 100vw;
+  //height: 100vh;
+}
