@@ -5,7 +5,7 @@ import '@/assets/iconfont/iconfont.css'
 import App from './App'
 
 
-import request from './api/request'
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>

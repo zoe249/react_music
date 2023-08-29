@@ -1,24 +1,22 @@
-import axios from './axios'
-import type { AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
-const instance = axios()
+import myRequest from './request/index'
 
-/**
- * @Description: 网络请求
- *
- * @param
- * @return
- */
-export default {
-  get<T>(
-    url: string,
-    params?: unknown,
-    headers?: AxiosRequestHeaders
-  ): Promise<Response<T>> {
-    const options: AxiosRequestConfig = {}
-    if (params) options.params = params
-    if (headers) options.headers = headers
-    return instance.get(url, options)
+const http = new myRequest({
+  baseURL: 'http://localhost:3000',
+  withCredentials: true,
+  interceptors: {
+    requestInterceptor: (config) => {
+      return config
+    },
+    requestInterceptorCatch: (err) => {
+      return err
+    },
+    responseInterceptor: (config) => {
+      return config
+    },
+    responseInterceptorCatch: (err) => {
+      return err
+    },
   },
-}
+})
 
-// request.get('/api' + 'banner')
+export default http

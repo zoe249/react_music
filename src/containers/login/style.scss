@@ -1,6 +1,58 @@
-.login{
-  width: 100%;
-  height: 100%;
-  background-color: pink !important;
-
+.login-wrap{
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .login-box{
+    
+    width: 80%;
+    .form-item{
+      display: flex;
+      position: relative;
+      .iconfont{
+        position: absolute;
+        left: 5px;
+      }
+      input{
+        width: 80%;
+        border: none;
+        outline: none;
+        padding: 2px 20px;
+        padding-left: 30px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        &::-webkit-input-placeholder{
+          color: #ccc;
+        }
+        &::-ms-reveal{
+          display: none;
+        }
+      }
+    }
+    
+    .avator{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      img{
+        border-radius: 50%;
+        height: 120px;
+        width: 120px;
+      }
+    }
+    
+    .btn{
+      width: 80%;
+      background-color: skyblue;
+      text-align: center;
+      height: 30px;
+      border-radius: 15px;
+      line-height: 30px;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+  }
 }

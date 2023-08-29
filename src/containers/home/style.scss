@@ -1,20 +1,39 @@
 .home-wrap{
   width: 100vw;
   overflow: hidden;
-  //padding-top: .5rem;
+  font-size: 12px;
 }
 .banner-wrap{
   margin-top: 4px;
   display: flex;
+  
   .banner-item{
     box-sizing: content-box;
     display: flex;
     justify-content: center;
     width: calc(100vw - 40px);
-    margin-right: 20px;
+    margin-right: 30px;
     img{
       width: 100%;
       border-radius: 8px;
+    }
+  }
+}
+.dragon-wrap{
+  display: flex;
+  overflow: scroll;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  .dragon-item{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right:  10px;
+    img{
+      height: 50px;
+      width: 50px;
     }
   }
 }
