@@ -10,11 +10,11 @@ export default function Dark() {
   const [dark, setDark] = useState(localDark)
   const modelBtn = () => {
     if (!dark) {
-      window.document.documentElement.setAttribute('data-theme', 'dark')
+      window.document.documentElement.setAttribute('class', 'dark')
       // 将当前的主题色配置存储到本地
       setItem('theme', 'dark')
     } else {
-      window.document.documentElement.setAttribute('data-theme', 'light')
+      window.document.documentElement.setAttribute('class', 'light')
       setItem('theme', 'light')
     }
     setDark(!dark)
@@ -31,7 +31,7 @@ export default function Dark() {
  */
 const init = () => {
   const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
-  isDarkTheme.addEventListener('change',function (e){
+  isDarkTheme.addEventListener('change', function (e) {
     const theme = e.matches ? 'dark' : 'light'
     setItem('theme', theme)
     setThemeHandler()
@@ -41,10 +41,10 @@ const init = () => {
 init()
 
 // 获取本地当前的主题色
-function setThemeHandler(){
+function setThemeHandler() {
   if (getItem('theme') === 'dark') {
-    window.document.documentElement.setAttribute('data-theme', 'dark')
+    window.document.documentElement.setAttribute('class', 'dark')
   } else {
-    window.document.documentElement.setAttribute('data-theme', 'light')
+    window.document.documentElement.setAttribute('class', 'light')
   }
 }

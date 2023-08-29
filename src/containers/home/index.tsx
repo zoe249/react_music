@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import React from 'react'
 import request from '@/api/request'
-import { getBanners, getDragonBall } from './api'
+import { getBanners, getDragonBall, getTopSong } from './api'
 import SearchComponent from '@/components/searchComponent'
 import './style.scss'
 
@@ -22,7 +22,7 @@ export default function home() {
 
   return (
     <div className='home-wrap page'>
-      <SearchComponent />
+      {/* <SearchComponent /> */}
       <div className='banner-wrap' style={{ width: (banners as Array<any>).length * 100 + 'vw' }}>
         {
           banners.map((item: any, index: number) => {
@@ -36,6 +36,7 @@ export default function home() {
       </div>
 
       <DragonBall />
+      <TopSong />
     </div>
   )
 }
@@ -48,13 +49,10 @@ function DragonBall() {
         setDragonBall(res.data)
       }
     })
-    console.log('渲染');
-
   }, [])
 
   const handleDragon = (data: any) => {
     console.log(data);
-
   }
 
   return (
@@ -67,6 +65,40 @@ function DragonBall() {
                 <img src={item.iconUrl} alt="" />
               </div>
               <div className="label">{item.name}</div>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
+function TopSong() {
+  const [songs, setSong] = useState([])
+  useEffect(() => {
+    getTopSong().then((res: any) => {
+      if (res.code === 200) {
+        setSong(res.data.splice(0, 3))
+      }
+    })
+  }, [])
+
+  const handleSong = (item: any) => {
+    console.log(item)
+  }
+
+  return (
+    <div className='topsong-wrap'>
+      <div className="title">新歌速递</div>
+      {
+        songs.map((item: any) => {
+          return (
+            <div className='song-item' key={item.id} onClick={() => handleSong(item)}>
+              <img src={item.album.blurPicUrl} alt="" />
+              <div className="text">
+                <span className='white bold font13'>{item.name}</span>
+                <span className='name'>{item.artists[0].name}</span>
+              </div>
             </div>
           )
         })

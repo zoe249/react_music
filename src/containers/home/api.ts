@@ -11,4 +11,9 @@ const getDragonBall = <T>() => {
   return http.get<T>('/homepage/dragon/ball')
 }
 
-export { getBanners, getDragonBall }
+/** 新歌速递 */
+const getTopSong = <T>(type: string = '0') => {
+  return http.get<T>('/top/song?type=' + type)
+}
+
+export { getBanners, getDragonBall, getTopSong }
