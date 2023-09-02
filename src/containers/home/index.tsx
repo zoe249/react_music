@@ -1,11 +1,14 @@
 import { useEffect, useState, useCallback } from 'react'
-import React from 'react'
 import request from '@/api/request'
 import { getBanners, getDragonBall, getTopSong } from './api'
 import SearchComponent from '@/components/searchComponent'
+import AudioCopmonent from '@/components/audio'
+import { getSongUrl } from '@/api/common'
+import store from '@/store'
+import { changeUpdateMusic } from '@/store/music/actionCreators'
 import './style.scss'
 
-export default function home() {
+const Home: React.FunctionComponent = () => {
   const [banners, setBanners] = useState([])
   let [currentIndex, setCurrentIndex] = useState(0)
   let bannerLength = 0
@@ -16,7 +19,7 @@ export default function home() {
     })
     setInterval(() => {
       currentIndex === bannerLength - 1 ? currentIndex = 0 : currentIndex++
-      setCurrentIndex(currentIndex)
+      // setCurrentIndex(currentIndex)
     }, 3000)
   }, [])
 
@@ -37,11 +40,13 @@ export default function home() {
 
       <DragonBall />
       <TopSong />
+
+      {/* <AudioCopmonent /> */}
     </div>
   )
 }
 
-function DragonBall() {
+const DragonBall: React.FunctionComponent = () => {
   const [dragonBall, setDragonBall] = useState([])
   useEffect(() => {
     getDragonBall().then((res: any) => {
@@ -52,7 +57,9 @@ function DragonBall() {
   }, [])
 
   const handleDragon = (data: any) => {
-    console.log(data);
+
+
+    // console.log(store.getState());
   }
 
   return (
@@ -73,7 +80,7 @@ function DragonBall() {
   )
 }
 
-function TopSong() {
+const TopSong: React.FunctionComponent = () => {
   const [songs, setSong] = useState([])
   useEffect(() => {
     getTopSong().then((res: any) => {
@@ -84,7 +91,13 @@ function TopSong() {
   }, [])
 
   const handleSong = (item: any) => {
-    console.log(item)
+    const musicData = {
+      id: item.id,
+      name: item.name,
+      author: item.artists[0].name,
+      picUrl: item.album.blurPicUrl
+    }
+    store.dispatch(changeUpdateMusic(musicData))
   }
 
   return (
@@ -106,3 +119,5 @@ function TopSong() {
     </div>
   )
 }
+
+export default Home

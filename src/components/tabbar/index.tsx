@@ -25,6 +25,7 @@ const tabs = [
   }
 ]
 
+
 export default function tabbar(props: any) {
   return (
     <div className='mine-tabbar'>

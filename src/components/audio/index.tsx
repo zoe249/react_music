@@ -1,11 +1,25 @@
-import { useState } from "react"
+import { useState, useEffect, createRef, forwardRef } from "react"
+import store from "@/store"
 /**
  * 音频播放控件
  */
-export default function audio() {
+function Audio() {
+  const [url, setUrl] = useState('')
+  const audioRef = createRef<HTMLAudioElement>()
+  useEffect(() => {
+    let unsubscribe = store.subscribe(() => {
+      setUrl(store.getState().music.musicUrl)
+      audioRef.current?.play()
+    })
+    return () => unsubscribe()
+  })
+
+
   return (
     <div className="audio-control">
-      <audio autoPlay={true} src='' />
+      <audio ref={audioRef} autoPlay={true} src={url} />
     </div>
   )
 }
+
+export default Audio
