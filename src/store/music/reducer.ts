@@ -1,13 +1,14 @@
 import { CHANGE_ADD, CHANGE_DELETE, CHANGE_UPDATE } from './constrants'
-import { changeUpdateMusic } from './actionCreators'
+import { musicType } from './types'
 
-const initMusic = {
+const initMusic: musicType = {
   name: '起风了',
   musicUrl: '',
+  author: '',
+  picUrl: '',
 }
 
-function reducer(state = initMusic, action: any) {
-  // console.log(action)
+function reducer(state = initMusic, action: any): musicType {
   switch (action.type) {
     case CHANGE_UPDATE:
       return { ...action }

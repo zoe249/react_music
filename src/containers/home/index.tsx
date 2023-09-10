@@ -83,7 +83,7 @@ const DragonBall: React.FunctionComponent = () => {
 const TopSong: React.FunctionComponent = () => {
   const [songs, setSong] = useState([])
   useEffect(() => {
-    getTopSong().then((res: any) => {
+    getTopSong('0').then((res: any) => {
       if (res.code === 200) {
         setSong(res.data.splice(0, 3))
       }
@@ -95,7 +95,8 @@ const TopSong: React.FunctionComponent = () => {
       id: item.id,
       name: item.name,
       author: item.artists[0].name,
-      picUrl: item.album.blurPicUrl
+      picUrl: item.album.blurPicUrl,
+      duration: item.duration
     }
     store.dispatch(changeUpdateMusic(musicData))
   }

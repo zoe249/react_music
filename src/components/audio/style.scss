@@ -1,0 +1,211 @@
+.audio-control{
+
+  .mini-control{
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 66px;
+    z-index: 99999;
+    height: 40px;
+    width: 90vw;
+    font-size: .18rem;
+    margin:0 auto;
+    border-radius: 20px;
+    z-index: 1;
+    &::after{
+      content: '';
+      position: absolute;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      border-radius: 20px;
+      // background-color: #fff;
+      backdrop-filter: blur(190px);
+    }
+    .left{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      height: 100%;
+      width: 80%;
+      position: relative;
+      z-index: 2;
+      img{
+        position: absolute;
+        height: 45px;
+        height: 45px;
+        bottom: 0px;
+        left: 0;
+        border-radius: 3px;
+        z-index: 9;
+      }
+      .name{
+        z-index: 2;
+        position: absolute;
+        font-weight: bold;
+        left: 50px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 200px;
+        .author{
+          font-size: 0.15rem;
+        }
+      }
+    }
+    .right{
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+      .iconfont{
+        font-size: .25rem;
+      }
+    }
+  }
+  .main-contral{
+    z-index: 7;
+    position: absolute;
+    font-size: 18px;
+    overflow: hidden;
+    
+    box-sizing: border-box;
+    &::before{
+      z-index: -1;
+      content: '';
+      position: absolute;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      backdrop-filter: blur(190px);
+    }
+    .top{
+      padding:20px;
+      z-index: 9 !important;
+      display: flex;
+      justify-content: space-between;
+      .music-name{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .main-content{
+      
+      .main-img{
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        img{
+          height: 50vw;
+          width: 50vw;
+          border-radius: 50%;
+          animation-name: main-img-animation;
+          animation-duration: 10s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+      }
+    }
+    .main-control{
+      padding: 0 20px;
+      .bar{
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 30px;
+        border-radius: 1px;
+        position: relative;
+        .max-bar{
+          width: 100%;
+          background-color: #e1d9d99a;
+          height: 2px;
+          position: absolute;
+        }
+        .active-bar{
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: -4px;
+          width: 100%;
+          .current-bar{
+            height: 2px;
+            width: 30px;
+            background-color: #fff;
+            // position: absolute;
+          }
+          .ball{
+            height: 10px;
+            width: 10px;
+            border-radius: 50px;
+            background-color: #fff;
+            transition: all .5s;
+            // transform: scale(3.5);
+            // transform: scale(1.5);
+            // position: absolute;
+          }
+        }
+        .time{
+          margin-top: 10px;
+          font-size: 12px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .icon{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .iconfont{
+          transform: scale(1.2);
+        }
+        .xiayishou{
+          display: flex;
+          align-items: center;
+          transform: rotate(-180deg);
+        }
+        .play{
+          transform: scale(2);
+        }
+      }
+    }
+  }
+}
+
+.main-contral-animation{
+  height: 100vh;
+  width: 100vw;
+  animation: main-contral-animation .3s;
+  overflow: hidden;
+}
+
+.ismove{
+  transform: scale(1.5);
+  transition: all .5s;
+}
+
+@keyframes main-contral-animation {
+  0%{
+    height: 100vh;
+    width: 100vw;
+    transform: translateY(100vh);
+  }
+  100%{
+    height: 100vh;
+    width: 100vw;
+    transform: translateY(0vh);    
+  }
+}
+
+@keyframes main-img-animation {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
